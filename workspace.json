@@ -53,7 +53,7 @@
             ]
           }
         },
-        "publish": {
+        "release": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
             "commands": ["node ../../../node_modules/.bin/semantic-release"],

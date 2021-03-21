@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-plugin-webpack",
+  "version": "0.0.1",
+  "generators": {
+    "nx-plugin-webpack": {
+      "factory": "./src/generators/nx-plugin-webpack/generator",
+      "schema": "./src/generators/nx-plugin-webpack/schema.json",
+      "description": "nx-plugin-webpack generator"
+    }
+  }
+}

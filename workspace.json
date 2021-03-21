@@ -1,0 +1,79 @@
+{
+  "version": 2,
+  "projects": {
+    "nx-plugin-webpack": {
+      "root": "packages/nx-plugin-webpack",
+      "sourceRoot": "packages/nx-plugin-webpack/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/nx-plugin-webpack/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/packages/nx-plugin-webpack"
+          ],
+          "options": {
+            "jestConfig": "packages/nx-plugin-webpack/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/packages/nx-plugin-webpack",
+            "tsConfig": "packages/nx-plugin-webpack/tsconfig.lib.json",
+            "packageJson": "packages/nx-plugin-webpack/package.json",
+            "main": "packages/nx-plugin-webpack/src/index.ts",
+            "assets": [
+              "packages/nx-plugin-webpack/*.md",
+              {
+                "input": "./packages/nx-plugin-webpack/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-plugin-webpack",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/nx-plugin-webpack",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nx-plugin-webpack-e2e": {
+      "projectType": "application",
+      "root": "e2e/nx-plugin-webpack-e2e",
+      "sourceRoot": "e2e/nx-plugin-webpack-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-plugin-webpack:build",
+            "npmPackageName": "@nx-plugins/nx-plugin-webpack",
+            "pluginOutputPath": "dist/packages/nx-plugin-webpack",
+            "jestConfig": "e2e/nx-plugin-webpack-e2e/jest.config.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/workspace"
+  }
+}

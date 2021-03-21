@@ -9,16 +9,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "packages/nx-plugin-webpack/**/*.ts"
-            ]
+            "lintFilePatterns": ["packages/nx-plugin-webpack/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/packages/nx-plugin-webpack"
-          ],
+          "outputs": ["coverage/packages/nx-plugin-webpack"],
           "options": {
             "jestConfig": "packages/nx-plugin-webpack/jest.config.js",
             "passWithNoTests": true
@@ -26,9 +22,7 @@
         },
         "build": {
           "executor": "@nrwl/node:package",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/packages/nx-plugin-webpack",
             "tsConfig": "packages/nx-plugin-webpack/tsconfig.lib.json",
@@ -60,11 +54,9 @@
           }
         },
         "publish": {
-          "builder": "@nrwl/workspace:run-commands",
+          "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": [
-              "node ../../../node_modules/.bin/semantic-release"
-            ],
+            "commands": ["node ../../../node_modules/.bin/semantic-release"],
             "cwd": "dist/packages/nx-plugin-webpack"
           }
         }

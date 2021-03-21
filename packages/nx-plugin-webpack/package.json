@@ -4,6 +4,7 @@
   "main": "src/index.js",
   "generators": "./generators.json",
   "executors": "./executors.json",
+  "author": "Curtis Hughes",
   "publishConfig": {
     "access": "public"
   },

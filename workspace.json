@@ -24,7 +24,7 @@
           "executor": "@nrwl/node:package",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/packages/nx-plugin-webpack",
+            "outputPath": "packages/nx-plugin-webpack/dist",
             "tsConfig": "packages/nx-plugin-webpack/tsconfig.lib.json",
             "packageJson": "packages/nx-plugin-webpack/package.json",
             "main": "packages/nx-plugin-webpack/src/index.ts",
@@ -44,11 +44,6 @@
                 "input": "./packages/nx-plugin-webpack",
                 "glob": "executors.json",
                 "output": "."
-              },
-              {
-                "input": "./packages/nx-plugin-webpack",
-                "glob": ".releaserc",
-                "output": "."
               }
             ]
           }
@@ -56,8 +51,8 @@
         "release": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": ["node ../../../node_modules/.bin/semantic-release"],
-            "cwd": "dist/packages/nx-plugin-webpack"
+            "commands": ["npx semantic-release"],
+            "cwd": "packages/nx-plugin-webpack"
           }
         }
       }

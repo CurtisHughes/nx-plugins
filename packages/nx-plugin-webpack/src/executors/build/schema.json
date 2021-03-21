@@ -4,6 +4,28 @@
   "title": "Build executor",
   "description": "",
   "type": "object",
-  "properties": {},
-  "required": []
+  "properties": {
+    "entry": {
+      "type": "string",
+      "description": "The entry point of your application."
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "The path to the output."
+    },
+    "outputFilename": {
+      "type": "string",
+      "description": "The filename of the output.",
+      "default": "main.js"
+    },
+    "tsConfig": {
+      "type": "string",
+      "description": "The path to the typescript configuration file."
+    },
+    "webpackConfig": {
+      "type": "string",
+      "description": "The path to the webpack configuration file."
+    }
+  },
+  "required": ["entry", "outputPath", "tsConfig", "webpackConfig"]
 }

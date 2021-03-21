@@ -3,5 +3,18 @@
   "version": "0.0.1",
   "main": "src/index.js",
   "generators": "./generators.json",
-  "executors": "./executors.json"
+  "executors": "./executors.json",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CurtisHughes/nx-plugins"
+  },
+  "keywords": [
+    "nx",
+    "nx plugins",
+    "webpack",
+    "webpack 5"
+  ]
 }

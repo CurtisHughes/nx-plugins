@@ -6,54 +6,47 @@ on:
       - main
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-npm-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-npm-${{ env.cache-name }}
-            ${{ runner.OS }}-npm-
-      - run: yarn
-      - run: yarn lint:check
-  format:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-npm-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.OS }}-npm-${{ env.cache-name }}
-            ${{ runner.OS }}-npm-
-      - run: yarn
-      - run: yarn format:check
   build:
     runs-on: ubuntu-latest
+    env:
+      CI: true
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
-      - name: Cache node modules
-        uses: actions/cache@v1
+          node-version: '14.15.x'
+      - uses: actions/cache@v2
         with:
-          path: node_modules
-          key: ${{ runner.OS }}-npm-${{ hashFiles('yarn.lock') }}
+          path: |
+            ~/.cache/yarn
+          key: ${{ runner.os }}-cache-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
-            ${{ runner.OS }}-npm-${{ env.cache-name }}
-            ${{ runner.OS }}-npm-
-      - run: yarn
-      - run: yarn build
+            ${{ runner.os }}-cache-
+      - run: yarn --frozen-lockfile
+      - run: yarn lint:affected --maxWarnings 0 --base=origin/master --head=HEAD
+      - run: yarn format:check --base=origin/master --head=HEAD
+      - run: yarn build:affected --base=origin/master --head=HEAD
+
+  unit-tests:
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.15.x'
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/yarn
+          key: ${{ runner.os }}-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cache-
+      - run: yarn --frozen-lockfile
+      - run: yarn test:affected --base=origin/master --head=HEAD

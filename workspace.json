@@ -53,6 +53,15 @@
               }
             ]
           }
+        },
+        "publish": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "node ../../../node_modules/.bin/semantic-release"
+            ],
+            "cwd": "dist/packages/nx-plugin-webpack"
+          }
         }
       }
     },

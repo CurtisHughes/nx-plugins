@@ -1,5 +1,5 @@
 {
-  "name": "@nx-plugins/nx-plugin-webpack",
+  "name": "@curtishughes/nx-plugin-webpack",
   "version": "0.0.1",
   "main": "src/index.js",
   "generators": "./generators.json",

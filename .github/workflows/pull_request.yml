@@ -25,9 +25,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cache-
       - run: yarn --frozen-lockfile
-      - run: yarn lint:affected --maxWarnings 0 --base=origin/master --head=HEAD
-      - run: yarn format:check --base=origin/master --head=HEAD
-      - run: yarn build:affected --base=origin/master --head=HEAD
+      - run: yarn lint:affected --maxWarnings 0 --base=origin/main --head=HEAD
+      - run: yarn format:check --base=origin/main --head=HEAD
+      - run: yarn build:affected --base=origin/main --head=HEAD
 
   unit-tests:
     needs: build
@@ -49,4 +49,4 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cache-
       - run: yarn --frozen-lockfile
-      - run: yarn test:affected --base=origin/master --head=HEAD
+      - run: yarn test:affected --base=origin/main --head=HEAD

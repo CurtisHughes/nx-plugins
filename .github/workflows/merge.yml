@@ -23,8 +23,8 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-cache-
     - run: yarn --frozen-lockfile
-    - run: yarn build:affected --base=origin/main~1 --head=HEAD
-    - run: yarn release:affected --base=origin/main~1 --head=HEAD
+    - run: yarn nx affected --target=build --base=origin/main~1 --head=HEAD
+    - run: yarn nx affected --target=release --base=origin/main~1 --head=HEAD
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -50,6 +50,11 @@
                 "input": "./packages/nx-plugin-webpack",
                 "glob": "executors.json",
                 "output": "."
+              },
+              {
+                "input": "./packages/nx-plugin-webpack",
+                "glob": ".releaserc",
+                "output": "."
               }
             ]
           }

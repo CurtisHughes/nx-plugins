@@ -25,6 +25,11 @@
     "webpackConfig": {
       "type": "string",
       "description": "The path to the webpack configuration file."
+    },
+    "mode": {
+      "type": "string",
+      "description": "The webpack mode",
+      "default": "production"
     }
   },
   "required": ["entry", "outputPath", "tsConfig", "webpackConfig"]

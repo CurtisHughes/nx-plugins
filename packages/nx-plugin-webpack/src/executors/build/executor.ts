@@ -1,3 +1,4 @@
+/* https://github.com/nrwl/nx/blob/041340b06a4cedf72ca2c317a781447a8d6df6e7/packages/web/src/utils/config.ts */
 /* eslint-disable @typescript-eslint/no-var-requires */
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import webpack = require('webpack');
@@ -8,10 +9,10 @@ export default async function (
   options: BuildExecutorSchema
 ): Promise<{ success: boolean }> {
   const extensions = ['.ts', '.tsx', '.mjs', '.js', '.jsx'];
-  const mainFields = ['module', 'main'];
+  const mainFields = ['module', 'main', 'es2015'];
   const config = require(resolve(process.cwd(), options.webpackConfig))(
     {
-      mode: 'production',
+      mode: options.mode,
       entry: resolve(process.cwd(), options.entry),
       output: {
         filename: options.outputFilename,

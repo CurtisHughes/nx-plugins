@@ -4,4 +4,5 @@ export interface BuildExecutorSchema {
   tsConfig: string;
   webpackConfig: string;
   outputFilename?: string;
+  mode?: 'development' | 'production';
 }

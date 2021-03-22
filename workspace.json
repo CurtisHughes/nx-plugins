@@ -96,7 +96,7 @@
           "executor": "@nrwl/node:package",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/packages/nx-plugin-rollup",
+            "outputPath": "packages/nx-plugin-rollup/dist",
             "tsConfig": "packages/nx-plugin-rollup/tsconfig.lib.json",
             "packageJson": "packages/nx-plugin-rollup/package.json",
             "main": "packages/nx-plugin-rollup/src/index.ts",

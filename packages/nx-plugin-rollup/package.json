@@ -1,5 +1,5 @@
 {
-  "name": "@nx-plugins/nx-plugin-rollup",
+  "name": "@curtishughes/nx-plugin-rollup",
   "version": "0.0.1",
   "author": "Curtis Hughes",
   "main": "src/index.js",

@@ -17,6 +17,9 @@
     "paths": {
       "nx-plugins/nx-plugin-webpack": [
         "packages/nx-plugin-webpack/src/index.ts"
+      ],
+      "@curtishughes/nx-plugin-rollup": [
+        "packages/nx-plugin-rollup/src/index.ts"
       ]
     }
   },

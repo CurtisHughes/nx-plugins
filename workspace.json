@@ -72,6 +72,71 @@
           }
         }
       }
+    },
+    "nx-plugin-rollup": {
+      "root": "packages/nx-plugin-rollup",
+      "sourceRoot": "packages/nx-plugin-rollup/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/nx-plugin-rollup/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/nx-plugin-rollup"],
+          "options": {
+            "jestConfig": "packages/nx-plugin-rollup/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/nx-plugin-rollup",
+            "tsConfig": "packages/nx-plugin-rollup/tsconfig.lib.json",
+            "packageJson": "packages/nx-plugin-rollup/package.json",
+            "main": "packages/nx-plugin-rollup/src/index.ts",
+            "assets": [
+              "packages/nx-plugin-rollup/*.md",
+              {
+                "input": "./packages/nx-plugin-rollup/src",
+                "glob": "**/*.!(ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-plugin-rollup",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/nx-plugin-rollup",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nx-plugin-rollup-e2e": {
+      "projectType": "application",
+      "root": "e2e/nx-plugin-rollup-e2e",
+      "sourceRoot": "e2e/nx-plugin-rollup-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-plugin-rollup:build",
+            "npmPackageName": "@nx-plugins/nx-plugin-rollup",
+            "pluginOutputPath": "dist/packages/nx-plugin-rollup",
+            "jestConfig": "e2e/nx-plugin-rollup-e2e/jest.config.js"
+          }
+        }
+      }
     }
   },
   "cli": {

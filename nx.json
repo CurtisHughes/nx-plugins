@@ -20,6 +20,11 @@
     "nx-plugin-webpack-e2e": {
       "tags": [],
       "implicitDependencies": ["nx-plugin-webpack"]
+    },
+    "nx-plugin-rollup": { "tags": [] },
+    "nx-plugin-rollup-e2e": {
+      "tags": [],
+      "implicitDependencies": ["nx-plugin-rollup"]
     }
   },
   "workspaceLayout": { "appsDir": "e2e", "libsDir": "packages" }

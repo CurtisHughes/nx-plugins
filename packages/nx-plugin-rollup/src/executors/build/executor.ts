@@ -20,7 +20,6 @@ export default async function (options: BuildExecutorSchema) {
   ))(defaultConfig);
 
   const bundle = await rollup.rollup(config);
-
   const outputOptions = Array.isArray(config.output)
     ? config.output
     : [config.output];

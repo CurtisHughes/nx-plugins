@@ -119,6 +119,13 @@
               }
             ]
           }
+        },
+        "release": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["npx semantic-release"],
+            "cwd": "packages/nx-plugin-rollup"
+          }
         }
       }
     },

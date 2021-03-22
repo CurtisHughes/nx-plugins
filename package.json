@@ -26,7 +26,10 @@
     "commit": "commit"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@rollup/plugin-typescript": "^8.2.0",
+    "rollup": "^2.42.1"
+  },
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",

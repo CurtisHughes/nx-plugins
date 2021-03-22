@@ -1,11 +1,27 @@
 {
   "name": "@nx-plugins/nx-plugin-rollup",
   "version": "0.0.1",
+  "author": "Curtis Hughes",
   "main": "src/index.js",
   "generators": "./generators.json",
   "executors": "./executors.json",
   "dependencies": {
     "@rollup/plugin-typescript": "^8.2.0",
     "rollup": "^2.42.1"
-  }
+  },
+  "peerDependencies": {
+    "typescript": "^4.1.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CurtisHughes/nx-plugins"
+  },
+  "keywords": [
+    "nx",
+    "nx plugins",
+    "rollup"
+  ]
 }
